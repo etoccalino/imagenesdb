@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 import imagereader
+import interface
 
 
 class Imagenes(models.Model):
@@ -39,3 +40,8 @@ class BuscaImagenes(Imagenes):
                      'exif',
                      'archivo',
                      'deleted')
+
+    def search_image(self, httprequest):
+        if httprequest.method == "GET":
+            qdict = httprequest.GET.copy()
+            return interface.exclusive_search(qdict)
