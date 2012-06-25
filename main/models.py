@@ -7,10 +7,9 @@ class Imagenes(models.Model):
     filehash = models.CharField(max_length=255, editable=False)
     exif = models.TextField(editable=False)
     archivo = models.ImageField(upload_to=".",
-                              verbose_name="Imagen:",
-                              max_length=500,blank=True,null=True)
+                                verbose_name="Imagen:",
+                                max_length=500, blank=True, null=True)
     deleted = models.BooleanField(default=False, editable=False)
-
 
     def _parse_imagen(self):
         if not self.archivo:
@@ -21,10 +20,8 @@ class Imagenes(models.Model):
         self.exif = data_imagen['exif']
         self.save()
 
-
     def save(self):
         super(Imagenes, self).save()
-
 
     def __unicode__(self):
         return self.filename
@@ -36,7 +33,7 @@ class Imagenes(models.Model):
 class BuscaImagenes(Imagenes):
     class Meta:
         proxy = True
-    
+
     model = Imagenes
     search_fields = ('filehash',
                      'exif',
