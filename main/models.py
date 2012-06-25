@@ -28,6 +28,16 @@ class Imagenes(models.Model):
         return self.filename
 
 
+class PluginModel(models.Model):
+    """Plugins will index Imagenes through this relation.
+
+    Notice that a OneToOne would forbid fuzzy categorization."""
+    image = models.ForeignKey(Imagenes, related_name='+')
+
+    class Meta:
+        abstract = True
+
+
 ###############################################################################
 
 

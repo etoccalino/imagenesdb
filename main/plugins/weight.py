@@ -1,12 +1,11 @@
 from django.db import models
-from models import Imagenes
+from models import PluginModel
 from interface import Aspect
 
 _weights = (('t', 'tiny'), ('s', 'small'), ('m', 'medium'), ('l', 'large'))
 
 
-class ImageWeight(models.Model):
-    image = models.OneToOneField(Imagenes)
+class ImageWeight(PluginModel):
     weight = models.CharField(max_length=1, choices=_weights)
 
 
