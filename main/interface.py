@@ -30,7 +30,7 @@ class Pluggable(type):
             cls.plugins.append(cls)
 
 
-# this class is designed to be inhereted, not to be instantiated directly.
+# this class is designed to be inhereted from, not to be instantiated directly.
 class Aspect:
     """Mount point for the Aspect-plugins.
 
@@ -67,5 +67,5 @@ def inclusive_search(qdict):
     if queries:
         queryset = reduce(lambda q1, q2: q1 | q2, queries)
     else:
-        queryset = Imagenes.objects.null()
+        queryset = Imagenes.objects.none()
     return queryset

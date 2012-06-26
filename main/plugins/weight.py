@@ -32,7 +32,7 @@ class Weight(Aspect):
         Assuming that the presence of 'weight' key in the qdict indicates its
         value is a non-empty collection, then... TODO """
         try:
-            # assume that popping 'weights' means its a non-emtpy collection.
+            # assume the popped 'weights' its a non-emtpy collection.
             weights = qdict.pop('weight')
 
             # create a list of filters based on the weight's criteria.
@@ -41,7 +41,7 @@ class Weight(Aspect):
             for weight in filter(lambda s: s in acceptable['weight'], weights):
                 queries += queryset.filter(image__weight=weight)
 
-            # the resulting queryset is the OR of the filters.
+            # the resulting queryset is the OR'ed of the filtered.
             queryset = reduce(lambda q1, q2: q1 | q2, queries)
         except KeyError:
             # no 'weight' criteria... this plugin does nothing.
