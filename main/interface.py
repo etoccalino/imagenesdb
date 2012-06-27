@@ -74,7 +74,7 @@ def inclusive_search(qdict):
 ###############################################################################
 
 
-class CategoryAspect(Aspect):
+class Category:
     """Category plugins are common. This class isolates common behaviuor.
 
     The 'category_name', holding the categories of interest to the user,
