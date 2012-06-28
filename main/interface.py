@@ -92,14 +92,14 @@ class Category:
 
     def __init__(self, plugin_model, category_field_name, category_name,
                  categories, *args, **kwargs):
-        super(CategoryAspect, self).__init__(*args, **kwargs)
+        super(Category, self).__init__(*args, **kwargs)
         self.plugin_model = plugin_model
         self.category_field_name = category_field_name
         self.category_name = category_name
         self.categories = categories
 
     def process_image(self, image_instance):
-        """Store the resulting category of the image in the weight table."""
+        """Store the resulting category of the image in the plugin table."""
         categorized = self.plugin_model(image=image_instance)
         category = self.categorize_image(image_instance)
         setattr(categorized, self.category_field_name, category)

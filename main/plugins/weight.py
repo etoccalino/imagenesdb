@@ -1,6 +1,6 @@
 from django.db import models
 from models import PluginModel
-from interface import CategoryAspect
+from interface import Category, Aspect
 
 
 _weights = (('t', 'tiny'), ('s', 'small'), ('m', 'medium'), ('l', 'large'))
@@ -11,15 +11,15 @@ class ImageWeight(PluginModel):
 
 
 class Weight(Aspect, Category):
-    
+
     def __init__(self, lower_bound=100, medium_bound=1024, upper_bound=3072):
         """Set the bounds used during processing, to categorize the images
         (given in kilobytes)."""
         configuration = {
-            plugin_model: ImageWeight,
-            category_name: 'weight',
-            category_field_name: 'weight',
-            categories: ['tiny', 'small', 'medium', 'large']
+            'plugin_model': ImageWeight,
+            'category_name': 'weight',
+            'category_field_name': 'weight',
+            'categories': ['tiny', 'small', 'medium', 'large']
             }
         super(Weight, self).__init__(**configuration)
         self.lower_bound = lower_bound
