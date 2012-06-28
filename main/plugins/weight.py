@@ -1,13 +1,13 @@
-from django.db import models
-from models import PluginModel
-from interface import Category, Aspect
+from django.db.models import CharField
+from main.models import PluginModel
+from main.interface import Category, Aspect
 
 
 _weights = (('t', 'tiny'), ('s', 'small'), ('m', 'medium'), ('l', 'large'))
 
 
 class ImageWeight(PluginModel):
-    weight = models.CharField(max_length=1, choices=_weights)
+    weight = CharField(max_length=1, choices=_weights)
 
 
 class Weight(Aspect, Category):

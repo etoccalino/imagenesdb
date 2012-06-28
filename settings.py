@@ -71,6 +71,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'main',
+    'main.plugins',
 )
 LOGGING = {
     'version': 1,
@@ -97,4 +98,4 @@ ITEMS_PER_PAGE = 10
 try:
     from local_settings import *
 except:
-    pass 
+    pass
