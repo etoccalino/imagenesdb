@@ -108,8 +108,8 @@ class Category:
     def filter_images(self, qdict, queryset):
         """Apply this category filter to the Imagenes queryset.
 
-        Assuming that the presence of 'weight' key in the qdict indicates its
-        value is a non-empty collection, then... TODO """
+        Assuming that the presence of 'category_name' key in the qdict
+        indicates its value is a non-empty collection, then... TODO """
         try:
             # assume the popped 'categories' its a non-emtpy collection.
             categories = qdict.pop(self.category_name)
@@ -126,3 +126,25 @@ class Category:
             # no criteria... this plugin does nothing.
             pass
         return queryset
+
+
+###############################################################################
+
+
+class BuscaImagenes(Imagenes):
+    """The interface to the model.
+    """
+
+    class Meta:
+        proxy = True
+
+    model = Imagenes
+    search_fields = ('filehash',
+                     'exif',
+                     'archivo',
+                     'deleted')
+
+    def search_image(self, httprequest):
+        if httprequest.method == "GET":
+            qdict = httprequest.GET.copy()
+            return exclusive_search(qdict)
