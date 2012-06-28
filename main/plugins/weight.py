@@ -10,7 +10,7 @@ class ImageWeight(PluginModel):
     weight = CharField(max_length=1, choices=_weights)
 
 
-class Weight(Aspect, Category):
+class Weight(Category, Aspect):
 
     def __init__(self, lower_bound=100, medium_bound=1024, upper_bound=3072):
         """Set the bounds used during processing, to categorize the images

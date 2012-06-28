@@ -74,7 +74,7 @@ def inclusive_search(qdict):
 ###############################################################################
 
 
-class Category:
+class Category(object):
     """Category plugins are common. This class isolates common behaviuor.
 
     The 'category_name', holding the categories of interest to the user,
@@ -90,7 +90,7 @@ class Category:
       the particular category it belongs to (only one, in this implementation).
     """
 
-    def __init__(self, plugin_model, category_field_name, category_name,
+    def __init__(self, plugin_model, category_name, category_field_name,
                  categories, *args, **kwargs):
         super(Category, self).__init__(*args, **kwargs)
         self.plugin_model = plugin_model
